@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/opt/mule-standalone-4.1.1/scripts/startMule.sh

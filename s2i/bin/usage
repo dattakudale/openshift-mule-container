@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# inform the user how to use the image
+cat <<EOF
+This is a S2I sample builder image, to use it, install
+https://github.com/openshift/source-to-image
+
+s2i https://github.com/dkudale/mule-app.git mule-esb-4.1.1:latest hello
+
+docker run -d -p 8081:8081 hello
+
+curl http://localhost:8081/test
+
+EOF
