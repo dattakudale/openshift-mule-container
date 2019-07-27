@@ -9,14 +9,13 @@ docker build -t mule-esb-4.1.1:latest .
 
 ## Build Mule Builder image Openshift Build
 ```
-oc new-project mule-esb --description="Mule ESB" --display-name="Mule ESB project"
-oc create imagestream mule-esb-4.1.1
+oc new-project mule-esb-project --description="Mule ESB" --display-name="Mule ESB project"
 
 git clone https://github.com/dkudale/openshift-mule-container.git
 cd openshift-mule-container
 oc create -f openshift-build.yaml
 
-oc create -f mule-411.json
+oc create -f templates/mule-411.json
 
 ```
 
