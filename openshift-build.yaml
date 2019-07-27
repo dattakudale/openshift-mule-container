@@ -1,0 +1,27 @@
+kind: "BuildConfig"
+apiVersion: "v1"
+metadata:
+  name: "mule-build-4.1.1" 
+spec:
+  runPolicy: "Serial" 
+  triggers: 
+    -
+      type: "GitHub"
+      github:
+        secret: "secret101"
+    - type: "Generic"
+      generic:
+        secret: "secret101"
+    -
+      type: "ImageChange"
+  source: 
+    git:
+      uri: "https://github.com/dkudale/openshift-mule-container.git"
+  strategy: 
+    type: "Docker"
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  output: 
+    to:
+      kind: "ImageStreamTag"
+      name: "mule-esb-4.1.1:latest"
