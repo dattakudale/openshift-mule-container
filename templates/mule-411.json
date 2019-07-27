@@ -227,7 +227,7 @@
             }
         },
         {
-            "kind": "Deployment",
+            "kind": "DeploymentConfig",
             "apiVersion": "v1",
             "metadata": {
                 "name": "${APPLICATION_NAME}",
