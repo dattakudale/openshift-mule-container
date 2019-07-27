@@ -5,6 +5,13 @@
 git clone https://github.com/dkudale/openshift-mule-container.git
 cd openshift-mule-container
 docker build -t mule-esb-4.1.1:latest .
+
+oc create imagestream mule-esb-4.1.1 latest
+
+oc tag apps.speakingbattery.com/mule-esb-4.1.1 mule-esb-project/mule-esb-4.1.1:latest
+
+oc import-image mule-esb-4.1.1 --confirm --from=apps.speakingbattery.com/mule-esb-4.1.1
+
 ```
 
 ## Build Mule Builder image Openshift Build
@@ -31,7 +38,7 @@ curl http://localhost:8081/test
 
 
 ```
-oc new-app mule-esb-project/mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i -l name=mule-app  -p APPLICATION_NAME=mule-app -p IMAGE_STREAM_NAMESPACE=mule-esb-project
+oc new-app mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i -l name=mule-app  -p APPLICATION_NAME=mule-app -p IMAGE_STREAM_NAMESPACE=mule-esb-project
 ```
 
 
