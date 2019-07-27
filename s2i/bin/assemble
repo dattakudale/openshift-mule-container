@@ -1,6 +1,14 @@
 #!/bin/bash
 
-env
+function restore_saved_artifacts() {
+  if [ "$(ls -A /opt/s2i/destination/artifacts/ 2>/dev/null)" ]; then
+    echo -n "Restoring saved artifacts from prior build..."
+    mv /opt/s2i/destination/artifacts/.m2/repository $HOME/.m2
+  fi
+}
+
+
+restore_saved_artifacts
 
 ls -ltr
 
