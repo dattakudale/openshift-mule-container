@@ -31,7 +31,7 @@ curl http://localhost:8081/test
 
 
 ```
-oc new-app mule-esb/mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i -l name=mule-app-1  -p APPLICATION_NAME=mule-app-1 -p IMAGE_STREAM_NAMESPACE=mule-esb-project
+oc new-app mule-esb-project/mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i -l name=mule-app-1  -p APPLICATION_NAME=mule-app-1 -p IMAGE_STREAM_NAMESPACE=mule-esb-project
 ```
 
 
