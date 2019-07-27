@@ -54,7 +54,7 @@ RUN chmod -R u+x ${MULE_HOME}/scripts && \
     chgrp -R 0 ${MULE_HOME} && \
     chmod -R g=u ${MULE_HOME} /etc/passwd
 
-RUN chown -R 1001:0 /opt/mule-standalone-4.1.1 && chown -R 1001:0 $HOME && \
+RUN chown -R 1001:0 /opt/mule-standalone-4.1.1 /opt/bin && chown -R 1001:0 $HOME && \
     chmod -R ug+rwX /opt/mule-standalone-4.1.1 /opt/bin && \
     chmod -R g+rw /opt/s2i/destination && \
     chmod -R u+x $STI_SCRIPTS_PATH/ /opt/bin
