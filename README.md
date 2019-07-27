@@ -1,11 +1,41 @@
 # openshift-mule-411
 
-Build Image from Mule Source app
+## Build Mule Builder image using Docker
+```
+git clone https://github.com/dkudale/openshift-mule-container.git
+cd openshift-mule-container
+docker build -t mule-esb-4.1.1:latest .
+```
+
+## Build Mule Builder image Openshift Build
+```
+oc new-project mule-esb --description="Mule ESB" --display-name="Mule ESB project"
+oc create imagestream mule-esb-4.1.1
+
+git clone https://github.com/dkudale/openshift-mule-container.git
+cd openshift-mule-container
+oc create -f openshift-build.yaml
+
+oc create -f mule-411.json
 
 ```
-s2i https://github.com/dkudale/mule-app.git mule-esb-4.1.1:latest hello
 
-docker run -d -p 8081:8081 hello
+## Build Image from Mule Source app
+
+```
+s2i build https://github.com/dkudale/mule-app.git mule-esb-4.1.1:latest mule-app
+
+docker run -d -p 8081:8081 mule-app
 
 curl http://localhost:8081/test
 ```
+
+
+```
+oc new-app mule-esb/mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i
+```
+
+
+## Template creation 
+```
+https://raw.githubusercontent.com/dkudale/openshift-mule-container/master/templates/mule-411.json
