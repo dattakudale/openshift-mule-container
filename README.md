@@ -32,7 +32,7 @@ curl http://localhost:8081/test
 
 
 ```
-oc new-app mule-esb/mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i
+oc new-app mule-esb/mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i -l name=mule-app-2  -p APPLICATION_NAME=mule-app-2
 ```
 
 
