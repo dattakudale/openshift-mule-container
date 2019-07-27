@@ -95,13 +95,7 @@
         {
             "description": "Container memory limit",
             "name": "MEMORY_LIMIT",
-            "value": "2Gi",
-            "required": false
-        },
-        {
-            "description": "Container memory limit",
-            "name": "MEMORY_LIMIT",
-            "value": "2Gi",
+            "value": "3Gi",
             "required": false
         }
     ],
@@ -284,6 +278,9 @@
                                 "imagePullPolicy": "Always",
                                 "resources": {
                                     "limits": {
+                                        "memory": "${MEMORY_LIMIT}"
+                                    },
+                                    "requests":{
                                         "memory": "${MEMORY_LIMIT}"
                                     }
                                 },
