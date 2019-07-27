@@ -18,7 +18,10 @@ LABEL name="Mule esb runtime 4.1.1" \
       io.openshift.tags="mule 4.1.1" \
       usage="docker run -d rhscl/mule-411"
 
-
+ENV MULE_HOME=/opt/mule-standalone-4.1.1 \
+    MULE_RUNTIME_VERSION=4.1.1 \
+    MAVEN_VERSION=3.3.9 \
+    JAVA_HOME=/usr/lib/jvm/java-1.8.0
 
 RUN INSTALL_PKGS="tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
     yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
@@ -28,13 +31,6 @@ RUN INSTALL_PKGS="tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-
     ln -sf /usr/local/apache-maven-$MAVEN_VERSION/bin/mvn /usr/local/bin/mvn && \
     mkdir -p $HOME/.m2 && \
     mkdir -p /opt/s2i/destination
-
-RUN ls -ltr /usr/lib/jvm/java-1.8.0
-
-ENV MULE_HOME=/opt/mule-standalone-4.1.1 \
-    MULE_RUNTIME_VERSION=4.1.1 \
-    MAVEN_VERSION=3.3.9 \
-    JAVA_HOME=/usr/lib/jvm/java-1.8.0
 
 RUN cd ~/ && wget https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/4.1.1/mule-standalone-4.1.1.tar.gz
 RUN cd /opt && tar xvzf ~/mule-standalone-4.1.1.tar.gz
