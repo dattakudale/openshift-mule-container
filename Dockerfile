@@ -30,6 +30,8 @@ RUN INSTALL_PKGS="tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-
     mkdir -p $HOME/.m2 && \
     mkdir -p /opt/s2i/destination
 
+ENV JAVA_HOME /etc/alternatives/jre
+
 RUN cd ~/ && wget https://repository.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/4.1.1/mule-standalone-4.1.1.tar.gz
 RUN cd /opt && tar xvzf ~/mule-standalone-4.1.1.tar.gz
 #RUN echo "6b5c3ae9c87f95b00f0c1aff300ca70c550f1952 ~/mule-standalone-4.1.1.tar.gz" | md5sum -c
