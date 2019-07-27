@@ -7,6 +7,7 @@ function restore_saved_artifacts() {
   fi
 }
 
+ls -ltr /opt/s2i/destination/artifacts/
 
 restore_saved_artifacts
 
