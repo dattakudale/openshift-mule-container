@@ -39,6 +39,9 @@ RUN rm ~/mule-standalone-4.1.1.tar.gz
 RUN mkdir -p /opt/mule-standalone-4.1.1/scripts
 COPY ./root/startMule.sh /opt/mule-standalone-4.1.1/scripts/
 
+COPY ./root/livenessProbe.sh /opt/bin/
+COPY ./root/readinessProbe.sh /opt/bin/
+
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
@@ -54,7 +57,7 @@ RUN chmod -R u+x ${MULE_HOME}/scripts && \
 RUN chown -R 1001:0 /opt/mule-standalone-4.1.1 && chown -R 1001:0 $HOME && \
     chmod -R ug+rwX /opt/mule-standalone-4.1.1 && \
     chmod -R g+rw /opt/s2i/destination && \
-    chmod -R u+x $STI_SCRIPTS_PATH/
+    chmod -R u+x $STI_SCRIPTS_PATH/ /opt/bin
 
 USER 1001
 
