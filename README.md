@@ -38,6 +38,8 @@ curl http://localhost:8081/test
 
 ## Create app using Builder image and template
 ```
+--param-file=-
+
 oc new-app mule-esb-4.1.1:latest~https://github.com/dkudale/mule-app.git  --template=mule-4.1.1-s2i -l name=mule-app  -p APPLICATION_NAME=mule-app -p IMAGE_STREAM_NAMESPACE=mule-esb-project
 ```
 
